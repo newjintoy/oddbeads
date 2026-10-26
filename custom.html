@@ -1,0 +1,54 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>나만의 조합 — ODDBEADS</title><link rel="stylesheet" href="shared-header.css"><link rel="stylesheet" href="studio.css?v=woman-tryon-32"></head><body>
+<header><a href="home.html" class="brand studio-home-logo" aria-label="ODDBEADS 홈으로"><img src="assets/letter-0.png" alt="" style="width:16%"><img src="assets/letter-1.png" alt="" style="width:12.5%"><img src="assets/letter-2.png" alt="" style="width:12.5%"><img src="assets/letter-3.png" alt="" style="width:12%"><img src="assets/letter-4.png" alt="" style="width:10.3%"><img src="assets/letter-5.png" alt="" style="width:13%"><img src="assets/letter-6.png" alt="" style="width:12%"><img src="assets/letter-7.png" alt="" style="width:11.7%"></a><nav aria-label="Main navigation"><a href="home.html#beads" aria-label="Explore beads"><img src="assets/letter-0.png" alt=""><span>EXPLORE BEADS</span></a><a href="home.html#story" aria-label="Little meanings"><img src="assets/letter-0.png" alt=""><span>LITTLE MEANINGS</span></a><a href="emotions.html" aria-label="Style mix" aria-current="page"><img src="assets/letter-0.png" alt=""><span>STYLE MIX</span></a></nav><a class="outline" href="checkout.html">MY BAG <span id="cart-count">0</span> ↗</a></header>
+<main class="studio" id="top">
+<section class="studio-intro"><h1>YOUR <em>BEAD</em> MIX</h1><p>하나씩 고르고, 나답게 연결해 봐.</p></section>
+
+<section class="workspace">
+ <section class="preview" aria-label="나의 조합">
+  <div class="preview-head"><strong>MY COMBINATION</strong><span id="counter" aria-live="polite">0 / 45</span></div>
+  <div class="mode-tabs" id="mode-seg" role="group" aria-label="보기 방식"><button data-mode="bench" class="on">01 / DESIGN</button><button data-mode="wear">02 / TRY ON <span aria-hidden="true">↗</span></button></div>
+  <div class="fitting-types" id="prod-seg" role="group" aria-label="액세서리 종류"><button data-product="necklace" class="on">목걸이</button><button data-product="bracelet">팔찌</button><button data-product="ring">반지</button></div>
+  <div class="size-controls">
+   <div class="row" id="size-row"><label for="size" id="size-label">목걸이 길이</label><input type="range" id="size" min="35" max="45" step=".5" value="45"><output id="size-out">45cm</output></div>
+   <div class="row" id="ring-row" hidden><label for="ring-size">반지 호수</label><select id="ring-size"></select><output id="ring-out"></output></div>
+   <div class="row"><label for="mm">비즈 크기</label><input type="range" id="mm" min="4" max="12" step="1" value="10"><output id="mm-out">10mm</output></div>
+  </div>
+  <div class="stage" id="stage" data-mode="bench">
+   <canvas id="gl" aria-label="3D 비즈 작업대 · 캐릭터 착용"></canvas>
+   <div class="hud hud-tr"><span class="hint" id="hint"></span></div>
+   <div class="hud hud-bc" id="wear-bar" hidden><div class="seg" id="char-seg"></div><div class="seg" id="view-seg"></div></div>
+   <div class="hud hud-br"><button id="zoom-out" aria-label="멀리 보기">−</button><button id="zoom-in" aria-label="가까이 보기">+</button></div>
+   <div class="tip" id="tip" hidden></div><div class="drag-ghost" id="ghost" hidden></div>
+   <div class="gl-fail" id="gl-fail" hidden>이 브라우저에서는 3D 화면을 열 수 없어</div>
+  </div>
+  <div class="wear-actions"><button id="t-repeat">현재 패턴으로 채우기</button><button id="t-shuffle" class="hot">✦ 랜덤 믹스</button><button id="t-mirror">좌우 대칭</button><button id="t-rotL">◀ 돌리기</button><button id="t-rotR">돌리기 ▶</button><button id="t-undo">되돌리기</button><button id="t-clear">전체 흰색으로</button></div>
+  <p id="fit-status" aria-live="polite"></p>
+  <div class="selection-box"><div class="strip-head"><span class="label">MY STRAND / 순서대로</span><span class="slot-readout"><small>SLOT</small><strong id="slot-no">—</strong><span id="slot-name">자리를 골라봐</span></span></div>
+   <div class="strip" id="strip" role="listbox" aria-label="현재 조합 순서"></div>
+   <div class="tools sel-tools"><button id="s-prev">← 앞으로</button><button id="s-next">뒤로 →</button><button id="s-clear">선택 삭제</button></div></div>
+  <p class="count" id="count"></p>
+  <section class="price-box"><div class="price-row"><span id="base-label">목걸이 기본가</span><strong id="base-price">13,000원</strong></div><div class="price-row"><span>바꿔 끼운 비즈 <small id="swapped">0개</small></span><strong id="bead-total">0원</strong></div><div class="price-row total"><span>예상 상품 금액</span><strong id="total">13,000원</strong></div>
+   <small class="note">기본가 + 비즈 개당 단가 · 흰 비즈는 기본가에 포함 · 배송비 별도<br>비즈 단가는 제안 가격이며 확정 전이야</small>
+   <div class="buy"><button id="add-cart">장바구니 담기</button><button id="buy-now" class="hot">주문 내용 확인 ↗</button></div>
+   <div class="save"><button id="save">내 조합 저장 ↗</button><button id="load">저장한 조합 불러오기</button></div></section>
+  <p class="note">이미지는 조합을 살펴보기 위한 예시이며 실제 크기와 소재를 보증하지 않아요<br>저장한 조합은 현재 브라우저에 보관돼요</p>
+ </section>
+
+ <section class="browser" id="tray" aria-label="비즈 고르기">
+  <div class="tabs" id="categories"></div>
+  <input class="search" id="search" placeholder="비즈 이름이나 색상 검색" aria-label="비즈 검색">
+  <div class="filter-section"><div class="filter-heading"><span>COLOR / 여러 색을 함께 고를 수 있어</span><button class="reset" id="reset">필터 초기화</button></div><div class="colors" id="colors"></div></div>
+  <div class="filter-section"><div class="filter-heading">TEXTURE</div><div class="textures" id="textures"></div></div>
+  <div class="results" id="results" aria-live="polite"></div>
+  <div class="grid" id="grid"></div>
+  <nav class="catalog-pagination" id="pagination" aria-label="비즈 목록 페이지"></nav>
+  <p class="note">비즈를 누르면 선택한 자리(없으면 첫 흰 비즈 자리)에 바로 끼워져 · 마우스로는 비즈를 끌어다 목걸이 위에 놓을 수도 있어<br>원석 느낌 비즈는 이미지의 외관을 설명하는 이름이에요</p>
+ </section>
+</section>
+
+<section class="price-guide"><div class="label">PRICE GUIDE</div><h2>작은 조각의 가격</h2><p>목걸이 13,000원부터 · 팔찌 7,000원부터 · 반지 5,000원부터 · 기본 흰 비즈 포함</p><div id="price-table"></div></section>
+<footer><span>ODDBEADS</span><span>조금 다르게, 완전히 나답게</span></footer>
+</main>
+<div class="toast" id="toast" role="status"></div>
+<script src="vendor/three.min.js"></script><script src="studio-data.js"></script><script src="studio.js?v=woman-tryon-32"></script>
+</body></html>

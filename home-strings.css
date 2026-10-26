@@ -1,0 +1,56 @@
+/* Keep original raster artwork; only the composition and motion change. */
+header{height:84px;min-height:84px}.hero{position:relative;padding:18px 4% 30px;min-height:calc(100svh - 84px);display:flex;flex-direction:column}.eyebrow{flex-shrink:0}.logo-stage{position:relative;isolation:isolate;height:clamp(290px,48svh,580px);min-height:0;margin:24px 0 0;display:block;flex:1}.logo-stage .letter{position:absolute;top:0;height:clamp(88px,13vw,210px);animation:none;z-index:2;will-change:transform}.logo-stage .letter img{object-fit:contain;transition:none}.logo-stage .letter:hover img{transform:none}.thread-art{position:absolute;inset:0;width:100%;height:100%;overflow:visible;z-index:0;pointer-events:none}.thread-art path{fill:none;stroke:#797064;stroke-width:1.25;stroke-linecap:round;vector-effect:non-scaling-stroke}.hero .beads{position:absolute;inset:0;height:100%;min-height:0;margin:0;padding:0;display:block;pointer-events:none;z-index:1}.hero .beads .bead{position:absolute;width:9%;top:var(--bead-y)!important;left:var(--bead-x)!important;animation:none;pointer-events:auto;transform:translate(-50%,-50%)}.hero .beads .bead img{scale:1;aspect-ratio:1;object-fit:contain}.hero .hero-bottom{position:relative;z-index:3;margin-top:16px;gap:24px;flex-shrink:0;align-items:center}.hero h1{font-size:clamp(26px,2.8vw,48px);line-height:1.15;letter-spacing:-1.5px}.hero-bottom p{font-size:12px;line-height:1.6;margin:10px 0 0}.actions{margin:0}.main-cta{white-space:nowrap;font-size:13px;padding:18px 25px;letter-spacing:.7px}
+@media(max-width:760px){header{height:100px;min-height:100px}.hero{min-height:calc(100svh - 100px);padding:14px 4% 22px}.logo-stage{margin-top:22px;height:43svh;min-height:220px}.logo-stage .letter{height:15vw}.hero .beads .bead{width:14%}.hero .hero-bottom{display:flex;align-items:center;gap:12px}.hero h1{font-size:26px}.hero-bottom p{font-size:10px}.main-cta{font-size:10px;padding:15px 17px}}
+@media(max-height:650px) and (min-width:761px){header{height:64px;min-height:64px}.hero{min-height:calc(100svh - 64px);padding-top:12px}.logo-stage{height:43svh;margin-top:16px}.logo-stage .letter{height:11vw;max-height:120px}.hero h1{font-size:26px}.hero-bottom p{display:none}}
+/* Preserve the original entrance before the threaded letters settle. */
+.logo-stage .letter{animation:arrival 1.65s both;animation-delay:calc(var(--i)*55ms)}
+.letter-drop{display:flex;align-items:center;justify-content:center;width:100%;height:100%;transform-origin:50% 24%;will-change:transform}
+.thread-art path{stroke:#8d8170;stroke-width:1.15}
+@media(prefers-reduced-motion:reduce){.logo-stage .letter{animation:none!important}}
+.hero .beads .bead{animation:bead-arrive 1.17s 1.55s both}
+
+/* Warm woven cord: a soft edge, satin center and fine twisted fibers. */
+.thread-art .cord-shadow{stroke:#a39178;stroke-width:3.2;opacity:.13;transform:translate(.5px,1px)}
+.thread-art .cord-body{stroke:#c9b494;stroke-width:2.25;opacity:.95}
+.thread-art .cord-light{stroke:#f6ead3;stroke-width:.85;opacity:.9;transform:translate(-.35px,-.35px)}
+.thread-art .cord-fiber{stroke:#aa9475;stroke-width:.5;stroke-dasharray:.65 3.4;opacity:.48}
+
+/* Give the animation a definite stage and size the hanging artwork directly. */
+.hero{height:calc(100svh - 84px)}
+.logo-stage{flex:1 1 auto;min-height:220px}
+.letter-drop{position:absolute;display:block}
+.logo-stage .letter-drop img{display:block;width:100%;height:100%;object-fit:contain;transform:none}
+@media(max-width:760px){.hero{height:calc(100svh - 100px)}}
+@media(max-height:650px) and (min-width:761px){.hero{height:calc(100svh - 64px)}.logo-stage{min-height:150px}}
+
+/* Original alternating donut arrangement; no letter-driven displacement. */
+.hero .beads .bead{translate:none;animation:none;transform:translate(-50%,-50%)}
+.hero .beads .bead:hover{transform:translate(-50%,-50%)}
+
+/* Move the complete donut arrangement 4 CSS centimeters below its prior position. */
+.hero{height:auto}
+.logo-stage{flex:none;height:calc(clamp(290px,48svh,580px) + 4cm);padding-bottom:4cm}
+@media(max-width:760px){.hero{height:auto}.logo-stage{height:calc(max(220px,43svh) + 4cm)}}
+@media(max-height:650px) and (min-width:761px){.hero{height:auto}.logo-stage{height:calc(max(150px,43svh) + 4cm)}}
+
+.thread-art{display:none!important}
+
+/* Rest the smaller letters on one ground plane with soft contact shadows. */
+.letter-floor-shadow{position:absolute;display:block;pointer-events:none;z-index:0;border-radius:50%;background:radial-gradient(ellipse,#534638 0%,#84715b55 48%,transparent 74%);filter:blur(3px);opacity:0}
+.letter-drop{transform-style:preserve-3d}
+
+/* Reveal a warm open thread only while a bead or small letter is hovered. */
+.hero .thread-art{display:block!important;opacity:0;transition:opacity .25s ease;pointer-events:none}
+.hero .logo-stage.show-thread .thread-art{opacity:1}
+@media(prefers-reduced-motion:reduce){.hero .thread-art{transition:none}}
+
+/* Let the continuous strand remain visible through white image backgrounds. */
+.hero .beads{z-index:auto}
+.hero .beads .bead{z-index:1;mix-blend-mode:multiply}
+.hero .beads .bead img{mix-blend-mode:normal}
+
+/* A staggered draw-on follows the same beat as the entrance letters. */
+.hero .thread-art path{stroke-dasharray:1 1;stroke-dashoffset:1}
+.hero .thread-art .cord-fiber{stroke-dasharray:1 1}
+.hero .thread-art{transition:none}
+.hero .logo-stage.show-thread .thread-art{opacity:1}
